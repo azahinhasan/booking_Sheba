@@ -14,6 +14,35 @@ async function main() {
     ],
   });
 
+  const services = await prisma.service.createMany({
+    data: [
+      {
+        name: 'Service Name 1',
+        category: 'Service Category',
+        price: 99.99,
+        description: 'A detailed description of the service',
+      },
+      {
+        name: 'Service Name 2',
+        category: 'Service Category',
+        price: 91.99,
+        description: 'A detailed description of the service',
+      },
+      {
+        name: 'Service Name 3',
+        category: 'Service Category 2',
+        price: 94.99,
+        description: 'A detailed description of the service',
+      },
+      {
+        name: 'Service Name 4',
+        category: 'Service Category 2',
+        price: 92.99,
+        description: 'A detailed description of the service',
+      },
+    ],
+  });
+
   const passwordHashed = await argon2.hash('123456');
 
   const addUsers = await prisma.users.createMany({
@@ -21,7 +50,7 @@ async function main() {
       {
         uid: 'AUTH-123987',
         email: 'admin@test.test',
-        phone: '01711355057',
+        phone: '8801711355057',
         name: 'Abir Rahman',
         password: passwordHashed,
         userWeight: 10,
@@ -32,22 +61,9 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'AUTH-123988',
-        email: 'admin2@test.test',
-        phone: '01711355058',
-        name: 'John Doe',
-        password: passwordHashed,
-        userWeight: 8,
-        roleId: 2,
-        isMfaEnabled: false,
-        isPasswordValid: true,
-        isPasswordResetRequired: false,
-        lastPasswordResetDate: new Date(),
-      },
-      {
         uid: 'AUTH-123989',
         email: 'manager@test.test',
-        phone: '01711355059',
+        phone: '8801711355059',
         name: 'Jane Smith',
         password: passwordHashed,
         userWeight: 7,
@@ -58,35 +74,9 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'AUTH-123990',
-        email: 'user@test.test',
-        phone: '01711355060',
-        name: 'Alice Johnson',
-        password: passwordHashed,
-        userWeight: 6,
-        roleId: 6,
-        isMfaEnabled: false,
-        isPasswordValid: true,
-        isPasswordResetRequired: false,
-        lastPasswordResetDate: new Date(),
-      },
-      {
-        uid: 'AUTH-123991',
-        email: 'user2@test.test',
-        phone: '01711355061',
-        name: 'Bob Williams',
-        password: passwordHashed,
-        userWeight: 5,
-        roleId: 6,
-        isMfaEnabled: false,
-        isPasswordValid: true,
-        isPasswordResetRequired: false,
-        lastPasswordResetDate: new Date(),
-      },
-      {
         uid: 'AUTH-123992',
         email: 'user3@test.test',
-        phone: '01711355062',
+        phone: '8801711355062',
         name: 'Charlie Brown',
         password: passwordHashed,
         userWeight: 4,

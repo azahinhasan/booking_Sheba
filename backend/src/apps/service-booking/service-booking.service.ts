@@ -26,19 +26,7 @@ export class ServiceBookingService {
           serviceId: dto.serviceId,
         },
       });
-
-      await this.actionLogger.logAction(
-        {
-          referenceId: booking.id,
-          refereceType: 'SERVICE_BOOKING',
-          action: 'CREATE',
-          context: 'ServiceBookingService - createBooking',
-          description: `Booking for ${booking.customerName} created`,
-          additionalInfo: null,
-        },
-        null,
-      );
-
+      
       return {
         status: 201,
         message: 'Booking created successfully',
