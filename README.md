@@ -121,41 +121,6 @@ Note: Here some api required authorization Bearer token. User can get token afte
     }
 }
 ```
-
-**404 Not Found** (if user does not exist):
-```json
-{
-  "status": 404,
-  "message": "User not found with provided credentials"
-}
-```
-
-**403 Forbidden** (if password is incorrect):
-```json
-{
-  "status": 403,
-  "message": "Your password is incorrect"
-}
-```
-
-**403 Forbidden** (if password reset is required):
-```json
-{
-  "status": 403,
-  "message": "Password reset required",
-  "data": {
-    "isPasswordResetRequired": true
-  }
-}
-```
-
-**403 Forbidden** (if password is expired):
-```json
-{
-  "status": 403,
-  "message": "Password expired, please reset password"
-}
-```
 ---
 ## Service API
 
@@ -175,23 +140,6 @@ This API allows for CRUD operations on Services, with features like pagination, 
 }
 ```
 
-**Response (Success)**:
-```json
-{
-  "status": 201,
-  "message": "Service created successfully",
-  "data": {
-    "id": 1,
-    "name": "Service Name",
-    "category": "Service Category",
-    "price": 99.99,
-    "description": "A detailed description of the service",
-    "createdAt": "2025-05-09T12:00:00.000Z",
-    "updatedAt": "2025-05-09T12:00:00.000Z"
-  }
-}
-```
-
 ### 2. Get All Services (Paginated) (GET -  authorization not required)
 
 **Endpoint**: `GET /services`
@@ -205,60 +153,9 @@ Example Request:
 GET /services?page=1&limit=10
 ```
 
-**Response (Success)**:
-```json
-{
-  "status": 200,
-  "message": "Services retrieved successfully",
-  "page": 1,
-  "limit": 10,
-  "totalCount": 1,
-  "data": [
-    {
-      "id": 1,
-      "name": "Service Name ",
-      "category": "Service Category ",
-      "price": 99.99,
-      "description": "A detailed description of the service",
-      "createdAt": "2025-05-09T12:00:00.000Z",
-      "updatedAt": "2025-05-09T12:00:00.000Z"
-    }
-  ]
-}
-```
-
 ### 3. Get a Single Service (GET -  authorization not required)
 
 **Endpoint**: `GET /services/:id`
-
-**Request**:
-```
-GET /services/1
-```
-
-**Response (Success)**:
-```json
-{
-  "status": 200,
-  "message": "Service fetched successfully",
-  "data": {
-    "id": 1,
-    "name": "Service Name",
-    "category": "Service Category",
-    "price": 99.99,
-    "description": "A detailed description of the service",
-    "createdAt": "2025-05-09T12:00:00.000Z",
-    "updatedAt": "2025-05-09T12:00:00.000Z"
-  }
-}
-```
-**Response (Error - Service Not Found)**:
-```json
-{
-  "status": 404,
-  "message": "Service not found"
-}
-```
 
 ### 4. Update a Service (PUT -  authorization required)
 
@@ -274,55 +171,10 @@ GET /services/1
 }
 ```
 
-**Response (Success)**:
-```json
-{
-  "status": 200,
-  "message": "Service updated successfully",
-  "data": {
-    "id": 1,
-    "name": "Updated Service Name",
-    "category": "Updated Service Category",
-    "price": 149.99,
-    "description": "Updated description of the service",
-    "createdAt": "2025-05-09T12:00:00.000Z",
-    "updatedAt": "2025-05-09T14:00:00.000Z"
-  }
-}
-```
-
-**Response (Error - Service Not Found)**:
-```json
-{
-  "status": 404,
-  "message": "Service not found"
-}
-```
-
 ### 5. Delete a Service (DELETE -  authorization required)
 
 **Endpoint**: `DELETE /services/:id`
 
-**Request**:
-```
-DELETE /services/1
-```
-
-**Response (Success)**:
-```json
-{
-  "status": 200,
-  "message": "Service deleted successfully"
-}
-```
-
-**Response (Error - Service Not Found)**:
-```json
-{
-  "status": 404,
-  "message": "Service not found"
-}
-```
 
 ---
 
@@ -337,53 +189,19 @@ Note: Default service IDs 1,2,3,4
 {
   "customerName": "Customer 1",
   "phone": "+8801414436321",
-  "bookingDate": "2025-05-10T12:00:00.000Z",
-  "notes": "Booking for consultation"
-}
-```
-
-### Response (Success):
-```json
-{
-    "status": 201,
-    "message": "Booking created successfully",
-    "data": {
-        "id": 3,
-        "bookingUid": "5f3db4b6-9e9e-4f8c-a770-dd1c4d87e686",
-        "customerName": "Customer 1",
-        "phone": "+8801414436321",
-        "status": "PENDING",
-        "serviceId": 1,
-        "createdAt": "2025-05-09T06:14:02.957Z",
-        "updatedAt": "2025-05-09T06:14:02.957Z"
-    }
+  "serviceId":1
 }
 ```
 
 ### 2. Get All Bookings (Paginated) (GET -  authorization required)
 **Endpoint**: `GET /service-bookings?page=1&limit=10`
 
-### Response (Success):
-```json
-{
-  "status": 200,
-  "message": "Bookings retrieved successfully",
-  "data": [{ "id": 1, "serviceId": 1, "userId": 1 }]
-}
-```
 
 ### 3. Get Booking by ID (all info) (GET -  authorization required)
 **Endpoint**: `GET /service-bookings/:id`
 
 ### 4. Get Booking status by ID (GET -  authorization not required)
 **Endpoint**: `GET /service-bookings/get-status/:id`
-```json
-{
-    "status": 200,
-    "message": "Booking fetched successfully",
-    "data": "PENDING"
-}
-```
 
 
 ### 5. Update Booking  (PUT -  authorization required)
@@ -399,11 +217,3 @@ Note: Default service IDs 1,2,3,4
 
 ### 6. Delete Booking (DELETE -  authorization required)
 **Endpoint**: `DELETE /service-bookings/:id`
-
-### Response (Success):
-```json
-{
-  "status": 200,
-  "message": "Booking deleted successfully"
-}
-```
