@@ -19,7 +19,7 @@ async function main() {
   const addUsers = await prisma.users.createMany({
     data: [
       {
-        uid: 'MANUSH-123987',
+        uid: 'AUTH-123987',
         email: 'admin@test.test',
         phone: '01711355057',
         name: 'Abir Rahman',
@@ -32,7 +32,7 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'MANUSH-123988',
+        uid: 'AUTH-123988',
         email: 'admin2@test.test',
         phone: '01711355058',
         name: 'John Doe',
@@ -45,7 +45,7 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'MANUSH-123989',
+        uid: 'AUTH-123989',
         email: 'manager@test.test',
         phone: '01711355059',
         name: 'Jane Smith',
@@ -58,7 +58,7 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'MANUSH-123990',
+        uid: 'AUTH-123990',
         email: 'user@test.test',
         phone: '01711355060',
         name: 'Alice Johnson',
@@ -71,7 +71,7 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'MANUSH-123991',
+        uid: 'AUTH-123991',
         email: 'user2@test.test',
         phone: '01711355061',
         name: 'Bob Williams',
@@ -84,7 +84,7 @@ async function main() {
         lastPasswordResetDate: new Date(),
       },
       {
-        uid: 'MANUSH-123992',
+        uid: 'AUTH-123992',
         email: 'user3@test.test',
         phone: '01711355062',
         name: 'Charlie Brown',
